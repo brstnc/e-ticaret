@@ -1,7 +1,7 @@
 @extends('layouts.partials.master')
 @section('title', 'AnaSayfa')
 @section('content')
-    <div class="container">
+<div class="container">
         <div class="row">
             <div class="col-md-3">
                 <div class="panel panel-default">
@@ -67,7 +67,7 @@
             </div>
         </div>
     </div>
-    <div class="container">
+<div class="container">
         <div class="products">
             <div class="panel panel-theme">
                 <div class="panel-heading">Öne Çıkan Ürünler</div>

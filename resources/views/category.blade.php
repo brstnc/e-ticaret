@@ -1,5 +1,5 @@
 @extends('layouts.partials.master')
-@section('title', 'AnaSayfa')
+@section('title', 'Kategori')
 @section('content')
     <div class="container">
         <ol class="breadcrumb">
