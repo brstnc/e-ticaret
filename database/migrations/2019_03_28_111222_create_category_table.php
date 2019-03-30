@@ -13,12 +13,15 @@ class CreateCategoryTable extends Migration
      */
     public function up()
     {
+
         Schema::create('category', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('up_id')->nullable();
             $table->string('category_name', 30);
             $table->string('slug', '40');
             $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP on UPDATE CURRENT_TIMESTAMP'));
+            $table->timestamp('deleted_at')->nullable();
         });
     }
 
