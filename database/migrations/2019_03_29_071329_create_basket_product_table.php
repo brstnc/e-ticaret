@@ -25,8 +25,8 @@ class CreateBasketProductTable extends Migration
             $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP on UPDATE CURRENT_TIMESTAMP'));
             $table->timestamp('deleted_at')->nullable();
 
-            $table->foreign('basket_id')->references('id')->on('basket')->onDelete('cascade');
-            $table->foreign('product_id')->references('id')->on('product')->onDelete('cascade');
+            // $table->foreign('basket_id')->references('id')->on('basket')->onDelete('cascade');
+            // $table->foreign('product_id')->references('id')->on('product')->onDelete('cascade');
         });
     }
 
