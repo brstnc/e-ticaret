@@ -11,6 +11,9 @@ class CategoryController extends Controller
     {
         $category = Category::where('slug', $slug_category_name)->firstOrFail();
         $low_categories = Category::where('up_id', $category->id)->get();
-        return view('category', compact('category', 'low_categories'));
+
+        $products = $category->products;
+
+        return view('category', compact('category', 'low_categories', 'products'));
     }
 }
