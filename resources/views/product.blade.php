@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
         <ol class="breadcrumb">
-            <li><a href="#">Anasayfa</a></li>
+            <li><a href="{{route('homepage')}}">Anasayfa</a></li>
             @foreach($categories as $category)
                 <li><a href="{{route('category', $category->slug)}}">{{$category->category_name}}</a></li>
             @endforeach
