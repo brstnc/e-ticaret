@@ -24,11 +24,11 @@
                         @endfor
                     </ol>
                     <div class="carousel-inner" role="listbox">
-                        @foreach($products_slider as $index => $product_detail)
+                        @foreach($products_slider as $index => $product)
                             <div class="item {{$index == 0 ? 'active' : ''}}">
-                                <img src="http://lorempixel.com/640/400/food/1" alt="...">
+                                <img src="http://via.placeholder.com/640x400?text=UrunResmi" alt="...">
                                 <div class="carousel-caption">
-                                    {{$product_detail->product->product_name}}
+                                    {{$product->product_name}}
                                 </div>
                             </div>
                         @endforeach
@@ -47,8 +47,9 @@
                 <div class="panel panel-default" id="sidebar-product">
                     <div class="panel-heading">Günün Fırsatı</div>
                     <div class="panel-body">
-                        <a href="#">
-                            <img src="http://lorempixel.com/400/485/food/1" class="img-responsive">
+                        <a href="{{route('product', $products_opportunity->product_name)}}">
+                            <img src="http://via.placeholder.com/640x700?text=UrunResmi" class="img-responsive">
+                            {{$products_opportunity->product_name}}
                         </a>
                     </div>
                 </div>
@@ -63,9 +64,9 @@
                     <div class="row">
                         @foreach($products_featured as $featured)
                             <div class="col-md-3 product">
-                                <a href="{{route('product', $featured->product->slug)}}"><img src="http://lorempixel.com/400/400/food/1"></a>
-                                <p><a href="{{route('product', $featured->product->slug)}}">{{$featured->product->product_name}}</a></p>
-                                <p class="price">{{$featured->product->price}} ₺</p>
+                                <a href="{{route('product', $featured->slug)}}"><img src="http://via.placeholder.com/640x400?text=UrunResmi"></a>
+                                <p><a href="{{route('product', $featured->slug)}}">{{$featured->product_name}}</a></p>
+                                <p class="price">{{$featured->price}} ₺</p>
                             </div>
                         @endforeach
                     </div>
@@ -79,9 +80,9 @@
                     <div class="row">
                         @foreach($products_bestselling as $bestselling)
                             <div class="col-md-3 product">
-                                <a href="{{route('product', $bestselling->product->slug)}}"><img src="http://lorempixel.com/400/400/food/2"></a>
-                                <p><a href="{{route('product', $bestselling->product->slug)}}">{{$bestselling->product->product_name}}</a></p>
-                                <p class="price">{{$bestselling->product->price}} ₺</p>
+                                <a href="{{route('product', $bestselling->slug)}}"><img src="http://via.placeholder.com/640x400?text=UrunResmi"></a>
+                                <p><a href="{{route('product', $bestselling->slug)}}">{{$bestselling->product_name}}</a></p>
+                                <p class="price">{{$bestselling->price}} ₺</p>
                             </div>
                         @endforeach
                     </div>
@@ -95,9 +96,9 @@
                     <div class="row">
                         @foreach($products_reduced as $reduced)
                             <div class="col-md-3 product">
-                                <a href="{{route('product', $reduced->product->slug)}}"><img src="http://lorempixel.com/400/400/food/3"></a>
-                                <p><a href="{{route('product', $reduced->product->slug)}}">{{$reduced->product->product_name}}</a></p>
-                                <p class="price">{{$reduced->product->price}} ₺</p>
+                                <a href="{{route('product', $reduced->slug)}}"><img src="http://via.placeholder.com/640x400?text=UrunResmi"></a>
+                                <p><a href="{{route('product', $reduced->slug)}}">{{$reduced->product_name}}</a></p>
+                                <p class="price">{{$reduced->price}} ₺</p>
                             </div>
                         @endforeach
                     </div>

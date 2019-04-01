@@ -13,7 +13,7 @@
                     <th>Durum</th>
                 </tr>
                 <tr>
-                    <td> <img src="http://lorempixel.com/120/100/food/2"> Ürün adı</td>
+                    <td> <img src="http://via.placeholder.com/120x100?text=UrunResmi"> Ürün adı</td>
                     <td>18.99</td>
                     <td>1</td>
                     <td>18.99</td>

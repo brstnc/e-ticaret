@@ -32,7 +32,7 @@
                     <div class="row">
                         @foreach($products as $product)
                             <div class="col-md-3 product">
-                                <a href="{{ route('product', $product->slug) }}"><img src="http://lorempixel.com/400/400/food/1"></a>
+                                <a href="{{ route('product', $product->slug) }}"><img src="http://via.placeholder.com/640x400?text=UrunResmi"></a>
                                 <p><a href="{{ route('product', $product->slug) }}">{{ $product->product_name }}</a></p>
                                 <p class="price">{{ $product->price }} ₺</p>
                                 <p><a href="#" class="btn btn-theme">Sepete Ekle</a></p>

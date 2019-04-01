@@ -12,17 +12,17 @@
         <div class="bg-content">
             <div class="row">
                 <div class="col-md-5">
-                    <img src="http://lorempixel.com/400/200/food/1">
+                    <img src="http://via.placeholder.com/400x200?text=UrunResmi">
                     <hr>
                     <div class="row">
                         <div class="col-xs-3">
-                            <a href="#" class="thumbnail"><img src="http://lorempixel.com/60/60/food/2"></a>
+                            <a href="#" class="thumbnail"><img src="http://via.placeholder.com/60x60?text=UrunResmi"></a>
                         </div>
                         <div class="col-xs-3">
-                            <a href="#" class="thumbnail"><img src="http://lorempixel.com/60/60/food/3"></a>
+                            <a href="#" class="thumbnail"><img src="http://via.placeholder.com/60x60?text=UrunResmi"></a>
                         </div>
                         <div class="col-xs-3">
-                            <a href="#" class="thumbnail"><img src="http://lorempixel.com/60/60/food/4"></a>
+                            <a href="#" class="thumbnail"><img src="http://via.placeholder.com/60x60?text=UrunResmi"></a>
                         </div>
                     </div>
                 </div>
