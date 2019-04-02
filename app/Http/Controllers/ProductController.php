@@ -14,4 +14,14 @@ class ProductController extends Controller
 
         return view('product', compact('product', 'categories'));
     }
+
+    public function search()
+    {
+        $call = request()->input('call');
+        $products = Product::where('product_name', 'like', "%$call%")
+            ->orWhere('comment', 'like', "%$call%")
+            ->get();
+
+        return view('search', compact('products'));
+    }
 }
