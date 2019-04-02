@@ -20,7 +20,7 @@ class ProductController extends Controller
         $call = request()->input('call');
         $products = Product::where('product_name', 'like', "%$call%")
             ->orWhere('comment', 'like', "%$call%")
-            ->get();
+            ->paginate(4);
 
         return view('search', compact('products'));
     }

@@ -18,6 +18,8 @@ Route::get('/category/{slug_category_name}', 'CategoryController@index')->name('
 Route::get('/product/{slug_product_name}', 'ProductController@index')->name('product');
 
 Route::post('/search', 'ProductController@search')->name('search');
+Route::get('/search', 'ProductController@search')->name('search');
+
 
 Route::get('/basket', 'BasketController@index')->name('basket');
 

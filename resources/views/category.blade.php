@@ -25,9 +25,7 @@
             </div>
             <div class="col-md-9">
                 <div class="products bg-content">
-                    Sırala
-                    <a href="#" class="btn btn-default">Çok Satanlar</a>
-                    <a href="#" class="btn btn-default">Yeni Ürünler</a>
+                    Ürünler
                     <hr>
                     <div class="row">
                         @foreach($products as $product)
@@ -39,6 +37,7 @@
                             </div>
                         @endforeach
                     </div>
+                    {{$products->links()}}
                 </div>
             </div>
         </div>

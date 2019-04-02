@@ -27,6 +27,7 @@
                     </div>
                 @endforeach
             </div>
+            {{ $products->appends(['search' => old('search')])->links() }}
         </div>
     </div>
 @endsection
