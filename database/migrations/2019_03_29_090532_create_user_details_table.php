@@ -19,6 +19,7 @@ class CreateUserDetailsTable extends Migration
             $table->string("address")->nullable();
             $table->string('tel_number')->nullable();
             $table->string('mob_tel_number')->nullable();
+
             $table->foreign('user_id')->references('id')->on('user')->onDelete('cascade');
         });
     }

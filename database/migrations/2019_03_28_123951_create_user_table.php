@@ -18,7 +18,7 @@ class CreateUserTable extends Migration
             $table->string('name_lastname', 60);
             $table->string('email', 150)->unique();
             $table->string('password',60);
-            $table->string('activation_key',60)->nullable();
+            $table->string('activation_key',6)->nullable();
             $table->boolean('active')->default(0);
             $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP on UPDATE CURRENT_TIMESTAMP'));

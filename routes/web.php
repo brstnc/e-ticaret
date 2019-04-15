@@ -30,8 +30,13 @@ Route::get('/orders', 'OrdersController@index')->name('orders');
 Route::get('/orders/{id}', 'OrdersController@detail')->name('order');
 
 Route::group(['prefix' => 'user'], function() {
-    Route::get('/signin', 'UserController@signin')->name('user.signin');
-    Route::get('/signup', 'UserController@signup')->name('user.signup');
+
+    Route::get('/signin', 'UserController@signin_form')->name('user.signin');
+    Route::post('/signin', 'UserController@signin');
+
+    Route::get('/signup', 'UserController@signup_form')->name('user.signup');
+    Route::post('/signup', 'UserController@signup');
+
 });
 
 

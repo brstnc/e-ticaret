@@ -13,20 +13,10 @@ class User extends Authenticatable
 
     protected $table = "user";
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
     protected $fillable = [
         'name_lastname', 'email', 'password', 'activation_key', 'active'
     ];
 
-    /**
-     * The attributes that should be hidden for arrays.
-     *
-     * @var array
-     */
     protected $hidden = [
         'password', 'activation_key',
     ];
@@ -35,6 +25,4 @@ class User extends Authenticatable
     {
         return $this->hasOne('App\Models\User_Details');
     }
-
-
 }

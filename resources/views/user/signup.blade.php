@@ -7,22 +7,20 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">Kaydol</div>
                     <div class="panel-body">
-                        <form class="form-horizontal" role="form" method="POST" action="#">
-
-                            <div class="form-group has-error">
-                                <label for="name" class="col-md-4 control-label">Kullanıcı Adı</label>
+                        @include('layouts.partials.errors')
+                        <form class="form-horizontal" role="form" method="POST" action="{{route('user.signup')}}">
+                            {{ csrf_field() }}
+                            <div class="form-group ">
+                                <label for="name_lastname" class="col-md-4 control-label">Ad Soyad</label>
                                 <div class="col-md-6">
-                                    <input id="name" type="text" class="form-control" name="name" value="" required autofocus>
-                                    <span class="help-block">
-                                        <strong>Kullanıcı adı boş bırakılamaz</strong>
-                                    </span>
+                                    <input id="name_lastname" type="text" class="form-control" name="name_lastname" value="{{ old('name_lastname') }}" required autofocus>
                                 </div>
                             </div>
 
                             <div class="form-group">
                                 <label for="email" class="col-md-4 control-label">Email</label>
                                 <div class="col-md-6">
-                                    <input id="email" type="email" class="form-control" name="email" value="" required>
+                                    <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required>
                                 </div>
                             </div>
 
