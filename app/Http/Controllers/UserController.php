@@ -62,6 +62,14 @@ class UserController extends Controller
         return redirect()->route('homepage');
     }
 
+    public function logout()
+    {
+        auth()->logout();
+        request()->session()->flush();
+        request()->session()->regenerate();
+        return redirect()->route('homepage');
+    }
+
     public function active($key)
     {
         $user = User::where('activation_key', $key)->first();
