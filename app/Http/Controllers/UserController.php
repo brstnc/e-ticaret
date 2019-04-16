@@ -48,6 +48,16 @@ class UserController extends Controller
         Auth::login($user);
 
         return redirect()->route('homepage');
+    }
 
+    public function active($key)
+    {
+        $user = User::where('activation_key', $key)->first();
+        if(!is_null($user)) {
+            $user->activation_key = null;
+            $user->active = 1;
+            $user->save();
+            return redirect()->to('/');
+        }
     }
 }

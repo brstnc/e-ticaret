@@ -37,6 +37,8 @@ Route::group(['prefix' => 'user'], function() {
     Route::get('/signup', 'UserController@signup_form')->name('user.signup');
     Route::post('/signup', 'UserController@signup');
 
+    Route::get('/active/{key}', 'UserController@active')->name('active');
+
 });
 
 
