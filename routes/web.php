@@ -41,5 +41,3 @@ Route::group(['prefix' => 'user'], function() {
 
 });
 
-
-

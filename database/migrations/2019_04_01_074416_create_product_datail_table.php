@@ -22,7 +22,7 @@ class CreateProductDatailTable extends Migration
             $table->boolean('show_bestselling')->default(0);
             $table->boolean('show_reduced')->default(0);
 
-            //$table->foreign('product_id')->references('id')->on('product')->onDelete('cascade');
+            $table->foreign('product_id')->references('id')->on('product')->onDelete('cascade');
         });
     }
 

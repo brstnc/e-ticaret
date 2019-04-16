@@ -19,7 +19,19 @@ class UserController extends Controller
 
     public function signin()
     {
-        return view('user.signin');
+        $this->validate(request(), [
+            'email' => 'required|email',
+            'password' => 'required'
+        ]);
+
+        if (auth()->attempt(['email' => request('email'), 'password' => request('password')], request()->has('remember'))) {
+            request()->session()->regenerate();
+            return redirect()->intended('/');
+        } else {
+            $errors = ['mail' => 'Hatalı giriş'];
+            return back()->withErrors($errors);
+        }
+
     }
 
     public function signup_form()
