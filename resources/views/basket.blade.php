@@ -17,7 +17,14 @@
                     <td style="width: 120px;">
                         <img src="http://lorempixel.com/120/100/food/2">
                     </td>
-                        <td>{{ $productCart->name }}</td>
+                        <td>
+                            {{ $productCart->name }}
+                            <form action="{{ route('basket.delete', $productCart->rowId) }}" method="post">
+                                {{ csrf_field() }}
+                                {{ method_field('DELETE') }}
+                                <input type="submit" class="btn btn-danger btn-xs" value="Sepetten Kaldır">
+                            </form>
+                        </td>
                     <td>{{ $productCart->price }} ₺</td>
                     <td>
                         <a href="#" class="btn btc-xs btn-default">-</a>

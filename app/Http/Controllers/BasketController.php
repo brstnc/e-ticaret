@@ -20,4 +20,9 @@ class BasketController extends Controller
 
         return redirect()->route('basket')->with('mesaj', 'Ürün sepete eklendi.');
     }
+    public function delete($rowId)
+    {
+        Cart::remove($rowId);
+        return redirect()->route('basket');
+    }
 }
