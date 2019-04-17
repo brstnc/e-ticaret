@@ -27,9 +27,7 @@
                         </td>
                     <td>{{ $productCart->price }} ₺</td>
                     <td>
-                        <a href="#" class="btn btc-xs btn-default">-</a>
                         <span style="padding: 10px 20px">{{ $productCart->qty }}</span>
-                        <a href="#" class="btn btc-xs btn-default">+</a>
                     </td>
                     <td class="text-right">
                         {{ $productCart->subtotal }} ₺

@@ -30,4 +30,9 @@ class BasketController extends Controller
         Cart::destroy();
         return redirect()->route('basket');
     }
+    public function update($rowId)
+    {
+        Cart::update($rowId, request('count'));
+        return response()->json(['success'=>true]);
+    }
 }

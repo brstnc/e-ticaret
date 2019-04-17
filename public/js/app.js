@@ -19170,6 +19170,26 @@ module.exports = function(module) {
  */
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
+$.ajaxSetup({
+  headers: {
+    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+  }
+});
+$('.increase, .decrease').on('click', function () {
+  var id = $(this).attr(data - id);
+  var count = $(this).attr(data - count);
+  $.ajax({
+    type: 'PATH',
+    url: 'basket/update/' + id,
+    data: {
+      count: count
+    },
+    success: function success(result) {
+      windows.location.href = '/basket';
+    }
+  });
+});
+
 /***/ }),
 
 /***/ "./resources/js/bootstrap.js":
