@@ -12,4 +12,8 @@ class Basket_Product extends Model
     protected $table = "basket_product";
     protected $guarded = [];
 
+    public function product()
+    {
+        return $this->belongsTo('App\Models\Product');
+    }
 }

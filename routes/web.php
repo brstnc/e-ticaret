@@ -21,7 +21,6 @@ Route::group(['prefix' => 'basket'], function() {
     Route::post('/add', 'BasketController@add')->name('basket.add');
     Route::delete('/delete/{rowId}', 'BasketController@delete')->name('basket.delete');
     Route::delete('/clear', 'BasketController@clear')->name('basket.clear');
-    Route::patch('/update/{rowId}', 'BasketController@update')->name('basket.update');
 });
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/payment', 'PaymentController@index')->name('payment');

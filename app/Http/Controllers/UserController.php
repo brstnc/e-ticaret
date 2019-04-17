@@ -3,10 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Mail\UserSignupMail;
+use App\Models\Basket;
+use App\Models\Basket_Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
+use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Support\Str;
 use App\Models\User;
 
@@ -31,6 +34,27 @@ class UserController extends Controller
 
         if (auth()->attempt(['email' => request('email'), 'password' => request('password')], request()->has('remember'))) {
             request()->session()->regenerate();
+
+            $basket_id = Basket::firstOrCreate(['user_id' => auth()->id()])->id;
+            session()->put('basket_id', $basket_id);
+
+            if (Cart::count()>0) {
+                foreach (Cart::content() as $cartItem)
+                {
+                    Basket_Product::updateOrCreate(
+                        ['basket_id' => $basket_id, 'product_id' => $cartItem->id],
+                        ['amount' => $cartItem->qty, 'piece' => $cartItem->price, 'status' => 'Beklemede']
+                    );
+                }
+            }
+
+            Cart::destroy();
+            $basket_products = Basket_Product::with('product')->where('basket_id', $basket_id)->get();
+            foreach ($basket_products as $basket_product)
+            {
+                Cart::add($basket_product->product->id, $basket_product->product->product_name, $basket_product->amount, $basket_product->piece, ['slug' => $basket_product->product->slug]);
+            }
+
             return redirect()->intended('/');
         } else {
             $errors = ['mail' => 'Hatalı giriş'];
