@@ -50,7 +50,11 @@
                 </tr>
             </table>
                 <div>
-                    <a href="#" class="btn btn-info pull-left">Sepeti Boşalt</a>
+                    <form action="{{ route('basket.clear') }}" method="post">
+                        {{ csrf_field() }}
+                        {{ method_field('DELETE') }}
+                        <input type="submit" class="btn btn-info btn-lg" value="Sepeti Boşalt">
+                    </form>
                     <a href="#" class="btn btn-success pull-right btn-lg">Ödeme Yap</a>
                 </div>
             @else

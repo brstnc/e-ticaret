@@ -25,4 +25,9 @@ class BasketController extends Controller
         Cart::remove($rowId);
         return redirect()->route('basket');
     }
+    public function clear()
+    {
+        Cart::destroy();
+        return redirect()->route('basket');
+    }
 }

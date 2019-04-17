@@ -20,6 +20,7 @@ Route::group(['prefix' => 'basket'], function() {
     Route::get('/', 'BasketController@index')->name('basket');
     Route::post('/add', 'BasketController@add')->name('basket.add');
     Route::delete('/delete/{rowId}', 'BasketController@delete')->name('basket.delete');
+    Route::delete('/clear', 'BasketController@clear')->name('basket.clear');
 });
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/payment', 'PaymentController@index')->name('payment');
