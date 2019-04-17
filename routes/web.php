@@ -16,7 +16,10 @@ Route::get('/category/{slug_category_name}', 'CategoryController@index')->name('
 Route::get('/product/{slug_product_name}', 'ProductController@index')->name('product');
 Route::post('/search', 'ProductController@search')->name('search');
 Route::get('/search', 'ProductController@search')->name('search');
-Route::get('/basket', 'BasketController@index')->name('basket');
+Route::group(['prefix' => 'basket'], function() {
+    Route::get('/', 'BasketController@index')->name('basket');
+    Route::post('/add', 'BasketController@add')->name('basket.add');
+});
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/payment', 'PaymentController@index')->name('payment');
     Route::get('/orders', 'OrdersController@index')->name('orders');
