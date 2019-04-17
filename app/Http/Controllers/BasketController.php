@@ -16,7 +16,7 @@ class BasketController extends Controller
     public static function add()
     {
         $product = Product::find(request('id'));
-        Cart::add($product->id, $product->product_name, 1, $product->price);
+        Cart::add($product->id, $product->product_name, 1, $product->price, ['slug' => $product->slug]);
 
         return redirect()->route('basket')->with('mesaj', 'Ürün sepete eklendi.');
     }
