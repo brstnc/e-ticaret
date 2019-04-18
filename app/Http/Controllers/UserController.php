@@ -36,7 +36,12 @@ class UserController extends Controller
         if (auth()->attempt(['email' => request('email'), 'password' => request('password')], request()->has('remember'))) {
             request()->session()->regenerate();
 
-            $basket_id = Basket::firstOrCreate(['user_id' => auth()->id()])->id;
+            $basket_id = Basket::basket_id();
+            if (is_null($basket_id)) {
+                $basket = Basket::create(['user_id' => auth()->id()]);
+
+                $basket_id = $basket->id;
+            }
             session()->put('basket_id', $basket_id);
 
             if (Cart::count()>0) {
