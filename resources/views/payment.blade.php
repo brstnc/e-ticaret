@@ -4,12 +4,14 @@
 <div class="container">
         <div class="bg-content">
             <h2>Ödeme</h2>
+            <form action="{{route('pay')}}" method="post">
+                {{ csrf_field() }}
             <div class="row">
                 <div class="col-md-5">
                     <h3>Ödeme Bilgileri</h3>
                     <div class="form-group">
-                        <label for="kartno">Kredi Kartı Numarası</label>
-                        <input type="text" class="form-control kredikarti" id="kartno" name="cardnumber" style="font-size:20px;" required>
+                        <label for="card_no">Kredi Kartı Numarası</label>
+                        <input type="text" class="form-control kredikarti" id="card_no" name="card_number" style="font-size:20px;" required>
                     </div>
                     <div class="form-group">
                         <label for="cardexpiredatemonth">Son Kullanma Tarihi</label>
@@ -17,13 +19,17 @@
                             <div class="col-md-6">
                                 Ay
                                 <select name="cardexpiredatemonth" id="cardexpiredatemonth" class="form-control" required>
-                                    <option>1</option>
+                                    @for($i=1;$i<13;$i++)
+                                        <option>{{$i}}</option>
+                                    @endfor
                                 </select>
                             </div>
                             <div class="col-md-6">
                                 Yıl
                                 <select name="cardexpiredateyear" class="form-control" required>
-                                    <option>2017</option>
+                                    @for($i=2020;$i<2030;$i++)
+                                        <option>{{$i}}</option>
+                                    @endfor
                                 </select>
                             </div>
                         </div>
@@ -52,20 +58,44 @@
                 </div>
                 <div class="col-md-7">
                     <h4>Ödenecek Tutar</h4>
-                    <span class="price">18.92 <small>TL</small></span>
+                    <span class="price">{{ Cart::total() }} <small>₺</small></span>
 
-                    <h4>Kargo</h4>
-                    <span class="price">0 <small>TL</small></span>
+                    <h4>İletişim ve Fatura bilgileri</h4>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label for="name_lastname">Ad Soyad</label>
+                                <input type="text" class="form-control" name="name_lastname" id="name_lastname" value="{{ auth()->user()->name_lastname }}" required>
+                            </div>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="form-group">
+                                <label for="name_lastname">Adres</label>
+                                <input type="text" class="form-control" name="adress" id="adress" value="{{ $detail->address }}" required>
+                            </div>
+                        </div>
 
-                    <h4>Teslimat Bilgileri</h4>
-                    <p>Teslimat Adresi </p>
-                    <a href="#">Değiştir</a>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label for="tel_number">Telefon</label>
+                                <input type="tel" class="form-control telefon" name="tel_number" id="tel_number" value="{{ $detail->tel_number }}" required>
+                            </div>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="form-group">
+                                <label for="mob_tel_number">Cep Telefonu</label>
+                                <input type="tel" class="form-control telefon" name="mob_tel_number" id="mob_tel_number" value="{{ $detail->mob_tel_number }}" required>
+                            </div>
+                        </div>
 
-                    <h4>Kargo</h4>
-                    <p>Ücretsiz
+                    </div>
+
+
                 </div>
             </div>
-
+            </form>
         </div>
     </div>
 @endsection

@@ -18,6 +18,10 @@ class CreateOrderTable extends Migration
             $table->integer('basket_id')->unsigned();
             $table->decimal('order_amount',5,4);
             $table->string('status', 30)->nullable();
+            $table->string('name_lastname', 30)->nullable();
+            $table->string('address', 30)->nullable();
+            $table->string('tel_number', 30)->nullable();
+            $table->string('mob_tel_number', 30)->nullable();
             $table->string('bank', 30)->nullable();
             $table->integer('number_instalments')->nullable();
             $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));

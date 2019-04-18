@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Mail\UserSignupMail;
 use App\Models\Basket;
 use App\Models\Basket_Product;
+use App\Models\User_Details;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -83,6 +84,8 @@ class UserController extends Controller
             'activation_key' => Str::random(6),
             'active' => '0'
         ]);
+
+        $user->user_details()->save(new User_Details());
 
         Mail::to(request('email'))->send(new UserSignupMail($user));
 
