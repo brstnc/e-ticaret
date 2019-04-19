@@ -2,16 +2,19 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Order;
 use Illuminate\Http\Request;
 
 class OrdersController extends Controller
 {
     public function index()
     {
-        return view('orders');
+        $orders = Order::with('basket')->orderByDesc('created_at')->get();
+        return view('orders', compact('orders'));
     }
     public function detail($id)
     {
-        return view('order');
+        $order = Order::all();
+        return view('order', compact('order'));
     }
 }

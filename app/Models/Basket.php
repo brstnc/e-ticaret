@@ -18,16 +18,21 @@ class Basket extends Model
         return $this->hasOne('App\Models\Order');
     }
 
-    public function basket_id()
+    public static function basket_id()
     {
-        $basket = DB::table('basket as b')
-            ->leftJoin('order as o', 'o.basket_id', '=', 'b.id')
-            ->where('b.user_id', auth()->id())
-            ->whereRaw('b.id is null')
-            ->orderByDesc('b.create_at')
-            ->select('b.id')
+        $basket = DB::table('basket')
+            ->leftJoin('order', 'order.basket_id', '=', 'basket.id')
+            ->where('basket.user_id', auth()->id())
+            ->whereRaw('basket.id is null')
+            ->orderByDesc('basket.created_at')
+            ->select('basket.id')
             ->first();
 
         if (!is_null($basket)) return $basket->id;
+    }
+
+    public function basket_product_count()
+    {
+        return DB::table('basket_product')->where('basket_id', $this->id)->sum('amount');
     }
 }

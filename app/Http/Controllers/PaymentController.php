@@ -36,7 +36,7 @@ class PaymentController extends Controller
         Cart::destroy();
         session()->forget('basket_id');
 
-        return view('orders');
+        return redirect()->route('orders');
     }
 
 }
