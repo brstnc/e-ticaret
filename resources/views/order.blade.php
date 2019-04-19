@@ -3,44 +3,40 @@
 @section('content')
     <div class="container">
         <div class="bg-content">
-            <h2>Sipariş (SP-00123)</h2>
+            <h2>Sipariş (SP-{{ $order->id }})</h2>
             <table class="table table-bordererd table-hover">
                 <tr>
-                    <th>Ürün</th>
+                    <th colspan="2">Ürün</th>
                     <th>Tutar</th>
                     <th>Adet</th>
                     <th>Ara Toplam</th>
                     <th>Durum</th>
                 </tr>
+                @foreach($order->basket->basket_products as $basket_product)
                 <tr>
-                    <td> <img src="http://via.placeholder.com/120x100?text=UrunResmi"> Ürün adı</td>
-                    <td>18.99</td>
-                    <td>1</td>
-                    <td>18.99</td>
+                    <td style="width: 120px;">
+                        <img src="http://via.placeholder.com/120x100?text=UrunResmi">
+                    </td>
+                    <td>{{ $basket_product->product->product_name }}</td>
+                    <td>{{ $basket_product->piece }} ₺</td>
+                    <td>{{ $basket_product->amount }}</td>
+                    <td>{{ $basket_product->piece * $basket_product->amount }} ₺</td>
                     <td>
-                        Sipariş alındı, <br> Onaylandı, <br> Kargoya verildi, <br> Bir sorun var. İletişime geçin!
+                        {{ $basket_product->status }}
                     </td>
                 </tr>
+                @endforeach
                 <tr>
-                    <th></th>
-                    <th></th>
-                    <th>Toplam Tutar (KDV Dahil)</th>
-                    <th>18.99</th>
-                    <th></th>
+                    <th colspan="4" class="text-right">Ara Toplam</th>
+                    <th colspan="2">{{ $order->order_amount }} ₺</th>
                 </tr>
                 <tr>
-                    <th></th>
-                    <th></th>
-                    <th>Kargo</th>
-                    <th>Ücretsiz</th>
-                    <th></th>
+                    <th colspan="4" class="text-right">KDV</th>
+                    <th colspan="2">{{ $order->order_amount * ((100+config('cart.tax'))/100) - $order->order_amount }} ₺</th>
                 </tr>
                 <tr>
-                    <th></th>
-                    <th></th>
-                    <th>Sipariş Toplamı</th>
-                    <th>18.99</th>
-                    <th></th>
+                    <th colspan="4" class="text-right">Toplam Tutar (KDV Dahil)</th>
+                    <th colspan="2">{{ $order->order_amount * ((100+config('cart.tax'))/100) }} ₺</th>
                 </tr>
 
             </table>

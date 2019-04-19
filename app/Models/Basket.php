@@ -35,4 +35,9 @@ class Basket extends Model
     {
         return DB::table('basket_product')->where('basket_id', $this->id)->sum('amount');
     }
+
+    public function basket_products()
+    {
+        return $this->hasMany('App\Models\Basket_Product');
+    }
 }
