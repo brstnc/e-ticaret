@@ -42,6 +42,9 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
    Route::get('/', function () {
      return "Admin";
    });
-   Route::get('/signin', 'UserController@signin')->name('admin.signin');
+   Route::get('/signin', 'UserController@signin_form')->name('admin.signin');
+   Route::post('/signin', 'UserController@signin');
+    Route::get('/homepage', 'HomePageController@index')->name('admin.homepage');
+
 });
 

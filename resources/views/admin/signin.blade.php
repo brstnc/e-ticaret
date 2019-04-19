@@ -9,7 +9,8 @@
 </head>
 <body>
 <div class="container">
-    <form class="form-signin">
+    <form class="form-signin" method="post" action="{{ route('admin.signin') }}">
+        {{ csrf_field() }}
         <label for="email" class="sr-only">Email address</label>
         <input type="email" id="email" name="email" class="form-control" placeholder="Email" required autofocus>
         <label for="password" class="sr-only">Password</label>
