@@ -38,3 +38,10 @@ Route::group(['prefix' => 'user'], function() {
     Route::get('/active/{key}', 'UserController@active')->name('active');
 });
 
+Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
+   Route::get('/', function () {
+     return "Admin";
+   });
+   Route::get('/signin', 'UserController@signin')->name('admin.signin');
+});
+
