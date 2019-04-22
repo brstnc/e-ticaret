@@ -42,6 +42,7 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
    Route::redirect('/', 'admin/signin');
    Route::match(['get','post'],'/signin', 'UserController@signin')->name('admin.signin');
     Route::get('/homepage', 'HomePageController@index')->name('admin.homepage');
+    Route::get('/logout', 'UserController@logout')->name('admin.logout');
 
 });
 

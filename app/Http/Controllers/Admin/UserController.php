@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
+
 
 class UserController extends Controller
 {
@@ -20,12 +22,20 @@ class UserController extends Controller
                 'password' => request('password'),
                 'admin' => 1
             ];
-            if (auth()->attempt($credentials, request()->has('remember'))) {
+            if (Auth::guard('admin')->attempt($credentials, request()->has('remember'))) {
                 return redirect()->route('admin.homepage');
             } else {
                 return back()->withInput()->withErrors(['email' => 'Giriş Hatalı']);
             }
         }
         return view('admin.signin');
+    }
+
+    public function logout()
+    {
+        Auth::guard('admin')->logout();
+        request()->session()->flush();
+        request()->session()->regenerate();
+        return redirect()->route('admin.signin');
     }
 }
