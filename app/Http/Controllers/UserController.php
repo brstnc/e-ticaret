@@ -32,8 +32,12 @@ class UserController extends Controller
             'email' => 'required|email',
             'password' => 'required'
         ]);
-
-        if (auth()->attempt(['email' => request('email'), 'password' => request('password')], request()->has('remember'))) {
+        $credentials = [
+            'email' => request('email'),
+            'password' => request('password'),
+            'active' => 1
+        ];
+        if (auth()->attempt($credentials, request()->has('remember'))) {
             request()->session()->regenerate();
 
             $basket_id = Basket::basket_id();
@@ -63,7 +67,7 @@ class UserController extends Controller
 
             return redirect()->intended('/');
         } else {
-            $errors = ['mail' => 'Hatalı giriş'];
+            $errors = ['mail' => 'Hatalı giriş.'];
             return back()->withErrors($errors);
         }
 

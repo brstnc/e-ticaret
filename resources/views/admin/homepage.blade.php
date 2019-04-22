@@ -1,5 +1,5 @@
 @extends('admin.layouts.master')
-@section('title', 'Anasayfa')
+@section('title', 'Yönetim Anasayfa')
 @section('content')
     <h1 class="page-header">Dashboard</h1>
     <section class="row text-center placeholders">
