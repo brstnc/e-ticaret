@@ -12,6 +12,7 @@ class UserController extends Controller
 
     public function signin()
     {
+
         if (request()->isMethod('POST')) {
             $this->validate(request(), [
                 'email' => 'required|email',

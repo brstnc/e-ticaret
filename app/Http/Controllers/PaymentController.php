@@ -10,10 +10,7 @@ class PaymentController extends Controller
 {
     public function index()
     {
-        if (!auth()->check()) {
-           return redirect()->route('user.signin');
-        }
-        else if (count(Cart::content())==0) {
+        if (count(Cart::content())==0) {
             return redirect()->route('homepage');
         }
 

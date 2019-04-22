@@ -22,12 +22,13 @@ Route::group(['prefix' => 'basket'], function() {
     Route::delete('/delete/{rowId}', 'BasketController@delete')->name('basket.delete');
     Route::delete('/clear', 'BasketController@clear')->name('basket.clear');
 });
-Route::get('/payment', 'PaymentController@index')->name('payment');
-Route::post('/payment', 'PaymentController@pay')->name('pay');
+
 
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/orders', 'OrdersController@index')->name('orders');
     Route::get('/orders/{id}', 'OrdersController@detail')->name('order');
+    Route::get('/payment', 'PaymentController@index')->name('payment');
+    Route::post('/payment', 'PaymentController@pay')->name('pay');
 });
 Route::group(['prefix' => 'user'], function() {
     Route::get('/signin', 'UserController@signin_form')->name('user.signin');
@@ -41,8 +42,10 @@ Route::group(['prefix' => 'user'], function() {
 Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
    Route::redirect('/', 'admin/signin');
    Route::match(['get','post'],'/signin', 'UserController@signin')->name('admin.signin');
-    Route::get('/homepage', 'HomePageController@index')->name('admin.homepage');
     Route::get('/logout', 'UserController@logout')->name('admin.logout');
+    Route::group(['middleware' => 'admin'], function () {
+        Route::get('/homepage', 'HomePageController@index')->name('admin.homepage');
+    });
 
 });
 
