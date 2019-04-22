@@ -41,10 +41,19 @@ Route::group(['prefix' => 'user'], function() {
 
 Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
    Route::redirect('/', 'admin/signin');
-   Route::match(['get','post'],'/signin', 'UserController@signin')->name('admin.signin');
-    Route::get('/logout', 'UserController@logout')->name('admin.logout');
+   Route::match(['get','post'],'/signin', 'AuthController@signin')->name('admin.signin');
+    Route::get('/logout', 'AuthController@logout')->name('admin.logout');
     Route::group(['middleware' => 'admin'], function () {
         Route::get('/homepage', 'HomePageController@index')->name('admin.homepage');
+
+        Route::group(['prefix' => 'user'], function () {
+            Route::match(['get', 'post'], '/', 'UserController@index')->name('admin.user');
+            Route::get('/new', 'UserController@form')->name('admin.user.new');
+            Route::get('/update/{id}', 'UserController@form')->name('admin.user.update');
+            Route::post('/save/{id}', 'UserController@save')->name('admin.user.save');
+            Route::get('/delete/{id}', 'UserController@delete')->name('admin.user.delete');
+
+        });
     });
 
 });

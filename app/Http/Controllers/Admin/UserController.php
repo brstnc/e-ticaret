@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -10,33 +11,26 @@ use Illuminate\Support\Facades\Auth;
 class UserController extends Controller
 {
 
-    public function signin()
-    {
 
-        if (request()->isMethod('POST')) {
-            $this->validate(request(), [
-                'email' => 'required|email',
-                'password' => 'required'
-            ]);
-            $credentials = [
-                'email' => request('email'),
-                'password' => request('password'),
-                'admin' => 1
-            ];
-            if (Auth::guard('admin')->attempt($credentials, request()->has('remember'))) {
-                return redirect()->route('admin.homepage');
-            } else {
-                return back()->withInput()->withErrors(['email' => 'Giriş Hatalı']);
-            }
-        }
-        return view('admin.signin');
+    public function index()
+    {
+        $list = User::orderbyDesc('created_at')->paginate(8);
+        return view('admin.user.index', compact('list'));
     }
 
-    public function logout()
+    public function form()
     {
-        Auth::guard('admin')->logout();
-        request()->session()->flush();
-        request()->session()->regenerate();
-        return redirect()->route('admin.signin');
+
     }
+
+    public function save()
+    {
+
+    }
+
+    public function delete()
+    {
+
+    }
+
 }
