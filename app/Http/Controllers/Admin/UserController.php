@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\User;
+use App\Models\User_Details;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -40,6 +41,15 @@ class UserController extends Controller
         if ($id>0) {
             $entry = User::where('id', $id)->firstOrFail();
             $entry->update($data);
+
+            User_Details::updateOrCreate(
+                ['user_id' => $id],
+                [
+                    'address' => request('address'),
+                    'tel_number' => request('tel'),
+                    'mob_tel_number' => request('mob_tel')
+                ]
+            );
         }
 
         return redirect()->route('admin.user.update', $entry->id);

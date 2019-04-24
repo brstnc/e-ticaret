@@ -36,12 +36,13 @@
                     <input type="text" class="form-control" name="address" id="address" placeholder="Address" value="{{ $entry->user_details->address }}">
                 </div>
             </div>
-            <div class="checkbox">
-                <label>
-                    <input type="checkbox" name="admin" id="admin" value="1" {{ $entry->admin ? 'checked' : '' }}> Yönetici
-                </label>
-            </div>
         </div>
+        <div class="checkbox">
+            <label>
+                <input type="checkbox" name="admin" id="admin" value="1" {{ $entry->admin ? 'checked' : '' }}> Yönetici
+            </label>
+        </div>
+
         <button type="submit" class="btn btn-primary">Kaydet</button>
     </form>
 @endsection
