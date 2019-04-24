@@ -100,7 +100,7 @@ class UserController extends Controller
 
         Auth::login($user);
 
-        return redirect()->route('homepage');
+        return redirect()->route('user.signin');
     }
 
     public function logout()

@@ -55,9 +55,10 @@ class UserController extends Controller
         return redirect()->route('admin.user.update', $entry->id);
     }
 
-    public function delete()
+    public function delete($id)
     {
-
+        $entry = User::where('id', $id)->firstOrFail();
+        $entry->Delete();
+        return redirect()->route('admin.user');
     }
-
 }

@@ -3,10 +3,6 @@
 @section('content')
     <h1 class="page-header">Kullanıcı Yönetimi</h1>
     <h1 class="sub-header">
-        <div class="btn-group pull-right" role="group" aria-label="Basic example">
-            <button type="button" class="btn btn-primary">Print</button>
-            <button type="button" class="btn btn-primary">Export</button>
-        </div>
         Kullanıcı Listesi
     </h1>
     <div class="table-responsive">
@@ -33,7 +29,7 @@
                         @if ($entry->active)
                             <span class="label label-success">Aktif</span>
                         @else
-                            <span class="label label-warning">Aktif</span>
+                            <span class="label label-warning">Aktif Değil</span>
                         @endif
                     </td>
                     <td>
@@ -46,9 +42,9 @@
                     <td>{{ $entry->created_at }}</td>
                     <td style="width: 100px">
                        <a href="{{ route('admin.user.update', $entry->id) }}" class="btn btn-s btn-success" data-toggle="tooltip" data-placement="top" title="Düzenle">
-                           <span class="fa fa-pencil"></span>
+                           <span class="fa fa-pencil" ></span>
                        </a>
-                        <a href="#" class="btn btn-s btn-danger" data-toggle="tooltip" data-placement="top" title="Sil" onclick="return confirm('Emin misin?')">
+                        <a href="{{ route('admin.user.delete', $entry->id) }}" class="btn btn-s btn-danger" data-toggle="tooltip" data-placement="top" title="Sil" onclick="return confirm('{{$entry->name_lastname }} Kişisini silmek istediğinize emin misin?')">
                         <span class="fa fa-trash"></span>
                         </a>
                     </td>
