@@ -45,7 +45,7 @@
                     </td>
                     <td>{{ $entry->created_at }}</td>
                     <td style="width: 100px">
-                       <a href="#" class="btn btn-s btn-success" data-toggle="tooltip" data-placement="top" title="Düzenle">
+                       <a href="{{ route('admin.user.update', $entry->id) }}" class="btn btn-s btn-success" data-toggle="tooltip" data-placement="top" title="Düzenle">
                            <span class="fa fa-pencil"></span>
                        </a>
                         <a href="#" class="btn btn-s btn-danger" data-toggle="tooltip" data-placement="top" title="Sil" onclick="return confirm('Emin misin?')">
