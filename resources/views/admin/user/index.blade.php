@@ -2,9 +2,9 @@
 @section('title', 'Kullanıcı Yönetimi')
 @section('content')
     <h1 class="page-header">Kullanıcı Yönetimi</h1>
-    <h1 class="sub-header">
+    <h2 class="sub-header">
         Kullanıcı Listesi
-    </h1>
+    </h2>
     <div class="table-responsive">
         <table class="table table-hover table-bordered">
             <thead class="thead-dark">
@@ -15,8 +15,7 @@
                 <th>Aktif mi</th>
                 <th>Statü</th>
                 <th>Kayıt Tarihi</th>
-
-                <th></th>
+                <th>Operasyonlar</th>
             </tr>
             </thead>
             <tbody>
@@ -52,6 +51,7 @@
             @endforeach
             </tbody>
         </table>
+        {{$list->links()}}
     </div>
 
 @endsection

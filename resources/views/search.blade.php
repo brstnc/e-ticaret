@@ -16,7 +16,7 @@
                 @foreach($products as $product)
                     <div class="col-md-3">
                         <a href="{{ route('product', $product->slug) }}" >
-                        <img src="http://via.placeholder.com/640x400?text=UrunResmi" alt="{{$product->product_name}}" >
+                        <img src="http://via.placeholder.com/250x200?text=UrunResmi" alt="{{$product->product_name}}" >
                         </a>
                         <p>
                             <a href="{{ route('product', $product->slug) }}">

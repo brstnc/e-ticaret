@@ -48,12 +48,12 @@
                 </tr>
             </table>
                 <div>
+                    <a href="{{ route('payment') }}" class="btn btn-success pull-right btn-lg">Ödeme Yap</a>
                     <form action="{{ route('basket.clear') }}" method="post">
                         {{ csrf_field() }}
                         {{ method_field('DELETE') }}
                         <input type="submit" class="btn btn-info btn-lg" value="Sepeti Boşalt">
                     </form>
-                    <a href="{{ route('payment') }}" class="btn btn-success pull-right btn-lg">Ödeme Yap</a>
                 </div>
             @else
                 <p>Sepetinizde ürün bulunmamakta. <a href="{{ route('homepage') }}" class="btn btn-info pull-right">Alışveriş Yap</a></p>

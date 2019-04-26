@@ -16,4 +16,5 @@ class Category extends Model
     {
         return $this->belongsToMany('App\Models\Product', 'category_product');
     }
+
 }

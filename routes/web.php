@@ -22,8 +22,6 @@ Route::group(['prefix' => 'basket'], function() {
     Route::delete('/delete/{rowId}', 'BasketController@delete')->name('basket.delete');
     Route::delete('/clear', 'BasketController@clear')->name('basket.clear');
 });
-
-
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/orders', 'OrdersController@index')->name('orders');
     Route::get('/orders/{id}', 'OrdersController@detail')->name('order');
@@ -48,11 +46,16 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
 
         Route::group(['prefix' => 'user'], function () {
             Route::match(['get', 'post'], '/', 'UserController@index')->name('admin.user');
-            Route::get('/new', 'UserController@form')->name('admin.user.new');
             Route::get('/update/{id}', 'UserController@form')->name('admin.user.update');
             Route::post('/save/{id}', 'UserController@save')->name('admin.user.save');
             Route::get('/delete/{id}', 'UserController@delete')->name('admin.user.delete');
-
+        });
+        Route::group(['prefix' => 'category'], function () {
+            Route::match(['get', 'post'], '/', 'CategoryController@index')->name('admin.category');
+            Route::get('/new', 'CategoryController@form')->name('admin.category.new');
+            Route::get('/update/{id}', 'CategoryController@form')->name('admin.category.update');
+            Route::post('/save/{id}', 'CategoryController@save')->name('admin.category.save');
+            Route::get('/delete/{id}', 'CategoryController@delete')->name('admin.category.delete');
         });
     });
 
