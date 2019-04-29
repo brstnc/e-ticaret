@@ -14,7 +14,6 @@
         <table class="table table-hover table-bordered">
             <thead class="thead-dark">
             <tr>
-                <th>id</th>
                 <th>Slug</th>
                 <th>Ürün Adı</th>
                 <th>Açıklama</th>
@@ -26,7 +25,6 @@
             <tbody>
             @foreach($list as $entry)
                 <tr>
-                    <td>{{ $entry->id }}</td>
                     <td>{{ $entry->slug }}</td>
                     <td>{{ $entry->product_name }}</td>
                     <td>{{ $entry->comment}}</td>

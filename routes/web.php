@@ -54,19 +54,16 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
             Route::match(['get', 'post'], '/', 'CategoryController@index')->name('admin.category');
             Route::get('/new', 'CategoryController@form')->name('admin.category.new');
             Route::get('/update/{id}', 'CategoryController@form')->name('admin.category.update');
-            Route::get('/save/{id}', 'CategoryController@save')->name('admin.category.save');
-            Route::post('/save', 'CategoryController@save')->name('admin.category.save');
+            Route::post('/save/{id?}', 'CategoryController@save')->name('admin.category.save');
             Route::get('/delete/{id}', 'CategoryController@delete')->name('admin.category.delete');
         });
         Route::group(['prefix' => 'product'], function () {
             Route::match(['get', 'post'], '/', 'ProductController@index')->name('admin.product');
             Route::get('/new', 'ProductController@form')->name('admin.product.new');
             Route::get('/update/{id}', 'ProductController@form')->name('admin.product.update');
-            Route::get('/save/{id}', 'ProductController@save')->name('admin.product.save');
-            Route::post('/save', 'ProductController@save')->name('admin.product.save');
+            Route::post('/save/{id?}', 'ProductController@save')->name('admin.product.save');
             Route::get('/delete/{id}', 'ProductController@delete')->name('admin.product.delete');
         });
     });
-
 });
 
