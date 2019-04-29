@@ -1,9 +1,12 @@
 @extends('admin.layouts.master')
 @section('title', 'Ürün Düzenleme')
 @section('content')
-    <h1 class="page-header">Ürün Düzenleme</h1>
-    <h2 class="sub-header">Form</h2>
-    <form method="post" action="{{ route('admin.product.save', $entry->id) }}">
+    @if($entry->id)
+        <h1 class="page-header">Ürün Düzenleme</h1>
+    @else
+        <h1 class="page-header">Ürün Ekleme</h1>
+    @endif
+    <form method="post" action="{{ route('admin.product.save', $entry->id) }}" enctype="multipart/form-data">
         {{ csrf_field() }}
         <div class="row">
             <div class="col-md-6">
@@ -82,6 +85,13 @@
                     </select>
                 </div>
             </div>
+        </div>
+        <div class="form-group">
+            @if ($entry->detail->product_img != null)
+                <img src="/E-Ticaret/laravel/public/uploads/products/{{ $entry->detail->product_img }}" class="thumbnail pull-left" style="height: 100px; margin-right: 20px">
+            @endif
+            <label for="product_img" >Ürün Resmi</label>
+            <input type="file" id="product_img" name="product_img">
         </div>
 
 

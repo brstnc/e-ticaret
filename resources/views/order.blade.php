@@ -15,7 +15,9 @@
                 @foreach($order->basket->basket_products as $basket_product)
                 <tr>
                     <td style="width: 120px;">
-                        <img src="http://via.placeholder.com/120x100?text=UrunResmi">
+                        <img class="img-responsive" style="min-width: 100%"
+                             src="{{ $basket_product->product->detail->product_img !=null ? '/E-Ticaret/laravel/public/uploads/products/'.$basket_product->product->detail->product_img
+                                 : 'http://via.placeholder.com/640x400?text=UrunResmi' }}">
                     </td>
                     <td>{{ $basket_product->product->product_name }}</td>
                     <td>{{ $basket_product->piece }} ₺</td>

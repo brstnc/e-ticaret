@@ -12,19 +12,10 @@
         <div class="bg-content">
             <div class="row">
                 <div class="col-md-5">
-                    <img src="http://via.placeholder.com/400x200?text=UrunResmi">
+                    <img class="img-responsive" style="min-width: 100%"
+                         src="{{ $product->detail->product_img !=null ? '/E-Ticaret/laravel/public/uploads/products/'.$product->detail->product_img
+                                 : 'http://via.placeholder.com/640x400?text=UrunResmi' }}">
                     <hr>
-                    <div class="row">
-                        <div class="col-xs-3">
-                            <a href="#" class="thumbnail"><img src="http://via.placeholder.com/60x60?text=UrunResmi"></a>
-                        </div>
-                        <div class="col-xs-3">
-                            <a href="#" class="thumbnail"><img src="http://via.placeholder.com/60x60?text=UrunResmi"></a>
-                        </div>
-                        <div class="col-xs-3">
-                            <a href="#" class="thumbnail"><img src="http://via.placeholder.com/60x60?text=UrunResmi"></a>
-                        </div>
-                    </div>
                 </div>
                 <div class="col-md-7">
                     <h1>{{ $product->product_name }}</h1>

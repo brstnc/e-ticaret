@@ -26,7 +26,9 @@
                     <div class="carousel-inner" role="listbox">
                         @foreach($products_slider as $index => $product)
                             <div class="item {{$index == 0 ? 'active' : ''}}">
-                                <img src="http://via.placeholder.com/640x400?text=UrunResmi" alt="...">
+                                <img class="img-responsive" style="min-width: 100%"
+                                     src="{{ $product->detail->product_img !=null ? '/E-Ticaret/laravel/public/uploads/products/'.$product->detail->product_img
+                                 : 'http://via.placeholder.com/640x400?text=UrunResmi' }}">
                                 <div class="carousel-caption">
                                     {{$product->product_name}}
                                 </div>
@@ -47,9 +49,11 @@
                 <div class="panel panel-default" id="sidebar-product">
                     <div class="panel-heading">Günün Fırsatı</div>
                     <div class="panel-body">
-                        <a href="{{route('product', $products_opportunity->product_name)}}">
-                            <img src="http://via.placeholder.com/640x700?text=UrunResmi" class="img-responsive">
-                            {{$products_opportunity->product_name}}
+                        <a href="{{route('product', $products_opportunity->slug)}}">
+                            <img class="img-responsive" style="min-width: 100%"
+                                 src="{{ $products_opportunity->detail->product_img !=null ? '/E-Ticaret/laravel/public/uploads/products/'.$products_opportunity->detail->product_img
+                                 : 'http://via.placeholder.com/640x400?text=UrunResmi' }}"><br>
+                            <p><a href="{{route('product', $products_opportunity->slug)}}">{{$products_opportunity->product_name}}</a></p>
                         </a>
                     </div>
                 </div>
@@ -64,7 +68,11 @@
                     <div class="row">
                         @foreach($products_featured as $featured)
                             <div class="col-md-3 product">
-                                <a href="{{route('product', $featured->slug)}}"><img src="http://via.placeholder.com/640x400?text=UrunResmi"></a>
+                                <a href="{{route('product', $featured->slug)}}">
+                                    <img class="img-responsive" style="min-width: 100%"
+                                         src="{{ $featured->detail->product_img !=null ? '/E-Ticaret/laravel/public/uploads/products/'.$featured->detail->product_img
+                                 : 'http://via.placeholder.com/640x400?text=UrunResmi' }}">
+                                </a>
                                 <p><a href="{{route('product', $featured->slug)}}">{{$featured->product_name}}</a></p>
                                 <p class="price">{{$featured->price}} ₺</p>
                             </div>
@@ -80,7 +88,11 @@
                     <div class="row">
                         @foreach($products_bestselling as $bestselling)
                             <div class="col-md-3 product">
-                                <a href="{{route('product', $bestselling->slug)}}"><img src="http://via.placeholder.com/640x400?text=UrunResmi"></a>
+                                <a href="{{route('product', $bestselling->slug)}}">
+                                    <img class="img-responsive" style="min-width: 100%"
+                                         src="{{ $bestselling->detail->product_img !=null ? '/E-Ticaret/laravel/public/uploads/products/'.$bestselling->detail->product_img
+                                 : 'http://via.placeholder.com/640x400?text=UrunResmi' }}">
+                                </a>
                                 <p><a href="{{route('product', $bestselling->slug)}}">{{$bestselling->product_name}}</a></p>
                                 <p class="price">{{$bestselling->price}} ₺</p>
                             </div>
@@ -96,7 +108,11 @@
                     <div class="row">
                         @foreach($products_reduced as $reduced)
                             <div class="col-md-3 product">
-                                <a href="{{route('product', $reduced->slug)}}"><img src="http://via.placeholder.com/640x400?text=UrunResmi"></a>
+                                <a href="{{route('product', $reduced->slug)}}">
+                                    <img class="img-responsive" style="min-width: 100%"
+                                         src="{{ $reduced->detail->product_img !=null ? '/E-Ticaret/laravel/public/uploads/products/'.$reduced->detail->product_img
+                                 : 'http://via.placeholder.com/640x400?text=UrunResmi' }}">
+                                </a>
                                 <p><a href="{{route('product', $reduced->slug)}}">{{$reduced->product_name}}</a></p>
                                 <p class="price">{{$reduced->price}} ₺</p>
                             </div>

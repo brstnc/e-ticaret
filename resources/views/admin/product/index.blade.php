@@ -5,8 +5,6 @@
     <h2 class="sub-header">
         Ürün Listesi
     </h2>
-
-
     <div class="table-responsive">
         <div class="btn-primary pull-right">
             <a href="{{route('admin.product.new')}}" class="btn btn-primary">Yeni</a>
@@ -14,6 +12,7 @@
         <table class="table table-hover table-bordered">
             <thead class="thead-dark">
             <tr>
+                <th>Resim</th>
                 <th>Slug</th>
                 <th>Ürün Adı</th>
                 <th>Açıklama</th>
@@ -25,6 +24,11 @@
             <tbody>
             @foreach($list as $entry)
                 <tr>
+                    <td>
+                        <img class="img-responsive" style="width: 100px"
+                             src="{{ $entry->detail->product_img !=null ? '/E-Ticaret/laravel/public/uploads/products/'.$entry->detail->product_img
+                                 : 'http://via.placeholder.com/640x400?text=UrunResmi' }}">
+                    </td>
                     <td>{{ $entry->slug }}</td>
                     <td>{{ $entry->product_name }}</td>
                     <td>{{ $entry->comment}}</td>

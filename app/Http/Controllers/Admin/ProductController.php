@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Models\Category;
 use App\Models\Product;
+use App\Models\ProductDetail;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -54,6 +55,28 @@ class ProductController extends Controller
             $entry = Product::create($data);
             $entry->detail()->create($data_detail);
             $entry->categories()->attach($categories);
+        }
+
+        if (request()->hasFile('product_img')) {
+
+            $this->validate(request(), [
+               'product_img' => 'image|mimes:jpg,png,jpeg,gif|max:2048'
+            ]);
+
+            $product_img = request()->product_img;
+
+            $file_name = $entry->id . "-". time() . "." . $product_img->extension();
+
+
+            if ($product_img->isValid()) {
+
+                $product_img->move('uploads/products', $file_name);
+
+                ProductDetail::updateOrCreate(
+                    ['product_id' => $entry->id],
+                    ['product_img' => $file_name]
+                );
+            }
         }
 
         return redirect()->route('admin.product.update', $entry->id);

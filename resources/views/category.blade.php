@@ -30,7 +30,11 @@
                     <div class="row">
                         @foreach($products as $product)
                             <div class="col-md-3 product">
-                                <a href="{{ route('product', $product->slug) }}"><img src="http://via.placeholder.com/640x400?text=UrunResmi"></a>
+                                <a href="{{ route('product', $product->slug) }}">
+                                    <img class="img-responsive" style="min-width: 100%"
+                                         src="{{ $product->detail->product_img !=null ? '/E-Ticaret/laravel/public/uploads/products/'.$product->detail->product_img
+                                 : 'http://via.placeholder.com/640x400?text=UrunResmi' }}">
+                                </a>
                                 <p><a href="{{ route('product', $product->slug) }}">{{ $product->product_name }}</a></p>
                                 <p class="price">{{ $product->price }} ₺</p>
                                 <p><a href="#" class="btn btn-theme">Sepete Ekle</a></p>
