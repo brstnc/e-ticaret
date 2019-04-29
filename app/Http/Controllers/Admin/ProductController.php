@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -19,13 +20,14 @@ class ProductController extends Controller
     public function form($id = 0)
     {
         $entry = new Product();
+        $product_categories = [];
         if($id>0) {
             $entry = Product::find($id);
+            $product_categories = $entry->categories()->pluck('category_id')->all();
         }
+        $categories = Category::all();
 
-        $products = Product::all()->where('up_id', null);
-
-        return view('admin.product.form', compact('entry', 'products'));
+        return view('admin.product.form', compact('entry', 'categories', 'product_categories'));
     }
 
     public function save($id = 0)
@@ -40,16 +42,19 @@ class ProductController extends Controller
         $data_detail = request()->only('show_slider', 'show_opportunity', 'show_featured',
             'show_bestselling', 'show_reduced') ;
 
+        $categories = request('categories');
+
         if ($id>0) {
             $entry = Product::where('id', $id)->firstOrFail();
             $entry->update($data);
             $entry->detail()->update($data_detail);
+            $entry->categories()->sync($categories);
 
         } else {
             $entry = Product::create($data);
             $entry->detail()->create($data_detail);
+            $entry->categories()->attach($categories);
         }
-
 
         return redirect()->route('admin.product.update', $entry->id);
     }

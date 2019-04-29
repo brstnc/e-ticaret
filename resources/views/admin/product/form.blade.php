@@ -67,9 +67,37 @@
                 <input type="checkbox" name="show_reduced" id="show_reduced" value="1" {{ old('show_reduced', $entry->detail->show_reduced) ? 'checked' : '' }}> İndirimli ürünlerde göster
             </label>
         </div>
-
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="categories">Kategoriler</label>
+                    <select class="form-control" name="categories[]" id="categories" multiple>
+                        @foreach($categories as $category)
+                            <option value="{{ $category->id }}"
+                                    {{ collect(old('categories', $product_categories))
+                                    ->contains($category->id) ? 'selected': '' }}>
+                                {{ $category->category_name }}
+                            </option>
+                        @endforeach
+                    </select>
+                </div>
+            </div>
+        </div>
 
 
         <button type="submit" class="btn btn-primary">Kaydet</button>
     </form>
+@endsection
+@section('head')
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
+@endsection
+@section('footer')
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
+    <script>
+        $(function () {
+            $('#categories').select2({
+                placeholder: 'Lütfen kategori seçiniz'
+            })
+        })
+    </script>
 @endsection
