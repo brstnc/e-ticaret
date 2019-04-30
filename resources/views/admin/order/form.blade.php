@@ -33,8 +33,8 @@
         <div class="row">
             <div class="col-md-6">
                 <div class="form-group">
-                    <label for="adress">Adres</label>
-                    <input type="text" class="form-control" name="adress" id="adress" placeholder="Adres" value="{{ old('adress', $entry->adress)}}">
+                    <label for="address">Adres</label>
+                    <input type="text" class="form-control" name="address" id="address" placeholder="Adres" value="{{ old('address', $entry->address)}}">
                 </div>
             </div>
         </div>
