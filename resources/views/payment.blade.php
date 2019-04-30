@@ -45,7 +45,7 @@
                     <form>
                         <div class="form-group">
                             <div class="checkbox">
-                                <label><input type="checkbox" checked> Ön bilgi3500 ₺lendirme formunu okudum ve kabul ediyorum.</label>
+                                <label><input type="checkbox" checked> Ön bilgilendirme formunu okudum ve kabul ediyorum.</label>
                             </div>
                         </div>
                         <div class="form-group">
@@ -70,7 +70,7 @@
                         </div>
                         <div class="col-md-8">
                             <div class="form-group">
-                                <label for="name_lastname">Adres</label>
+                                <label for="address">Adres</label>
                                 <input type="text" class="form-control" name="adress" id="adress" value="{{ $detail->address }}" required>
                             </div>
                         </div>

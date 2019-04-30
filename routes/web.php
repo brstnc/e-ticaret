@@ -62,9 +62,16 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
             Route::get('/new', 'ProductController@form')->name('admin.product.new');
             Route::get('/update/{id}', 'ProductController@form')->name('admin.product.update');
             Route::post('/save/{id?}', 'ProductController@save')->name('admin.product.save');
-
             Route::get('/delete/{id}', 'ProductController@delete')->name('admin.product.delete');
         });
+        Route::group(['prefix' => 'order'], function () {
+            Route::match(['get', 'post'], '/', 'OrderController@index')->name('admin.order');
+            Route::get('/new', 'OrderController@form')->name('admin.order.new');
+            Route::get('/update/{id}', 'OrderController@form')->name('admin.order.update');
+            Route::post('/save/{id}', 'OrderController@save')->name('admin.order.save');
+            Route::get('/delete/{id}', 'OrderController@delete')->name('admin.order.delete');
+        });
+
     });
 });
 

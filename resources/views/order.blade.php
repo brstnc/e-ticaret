@@ -10,7 +10,6 @@
                     <th>Tutar</th>
                     <th>Adet</th>
                     <th>Ara Toplam</th>
-                    <th>Durum</th>
                 </tr>
                 @foreach($order->basket->basket_products as $basket_product)
                 <tr>
@@ -23,9 +22,6 @@
                     <td>{{ $basket_product->piece }} ₺</td>
                     <td>{{ $basket_product->amount }}</td>
                     <td>{{ $basket_product->piece * $basket_product->amount }} ₺</td>
-                    <td>
-                        {{ $basket_product->status }}
-                    </td>
                 </tr>
                 @endforeach
                 <tr>

@@ -25,7 +25,7 @@ class PaymentController extends Controller
         $order = request()->all();
         $order['basket_id'] = session('basket_id');
         $order['number_instalments'] = '1';
-        $order['order_amount'] = Cart::subtotal();
+        $order['order_amount'] = Cart::subtotal(null, null, '');
         $order['bank'] = 'Ziraat';
         $order['status'] = 'Siparişiniz alındı';
 
