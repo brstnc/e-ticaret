@@ -45,7 +45,7 @@
                     <form>
                         <div class="form-group">
                             <div class="checkbox">
-                                <label><input type="checkbox" checked> Ön bilgilendirme formunu okudum ve kabul ediyorum.</label>
+                                <label><input type="checkbox" checked> Ön bilgi3500 ₺lendirme formunu okudum ve kabul ediyorum.</label>
                             </div>
                         </div>
                         <div class="form-group">

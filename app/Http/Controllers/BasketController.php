@@ -18,7 +18,8 @@ class BasketController extends Controller
     public static function add()
     {
         $product = Product::find(request('id'));
-        $cartItem = Cart::add($product->id, $product->product_name, 1, $product->price, ['slug' => $product->slug]);
+        $details = $product->detail;
+        $cartItem = Cart::add($product->id, $product->product_name, 1, $product->price, ['slug' => $product->slug, 'img' => $details->product_img]);
 
         if (auth()->check()) {
              $basket_id = session('basket_id');

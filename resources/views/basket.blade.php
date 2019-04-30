@@ -15,7 +15,7 @@
                 @foreach(Cart::content() as $productCart)
                 <tr>
                     <td style="width: 120px;">
-                        <img src="http://lorempixel.com/120/100/food/2">
+                        <img width="120" src="/E-Ticaret/laravel/public/uploads/products/{{ $productCart->options->img }}">
                     </td>
                         <td>
                             {{ $productCart->name }}

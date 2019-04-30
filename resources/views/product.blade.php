@@ -31,11 +31,9 @@
             <div>
                 <ul class="nav nav-tabs" role="tablist">
                     <li role="presentation" class="active"><a href="#t1" data-toggle="tab">Ürün Açıklaması</a></li>
-                    <li role="presentation"><a href="#t2" data-toggle="tab">Yorumlar</a></li>
                 </ul>
                 <div class="tab-content">
                     <div role="tabpanel" class="tab-pane active" id="t1">{{ $product->comment }}</div>
-                    <div role="tabpanel" class="tab-pane" id="t2">{{ $product->comment }}</div>
                 </div>
             </div>
 

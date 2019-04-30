@@ -37,7 +37,11 @@
                                 </a>
                                 <p><a href="{{ route('product', $product->slug) }}">{{ $product->product_name }}</a></p>
                                 <p class="price">{{ $product->price }} ₺</p>
-                                <p><a href="#" class="btn btn-theme">Sepete Ekle</a></p>
+                                <form action="{{ route('basket.add') }}" method="post">
+                                    {{ csrf_field()}}
+                                    <input type="hidden" name="id" value="{{ $product->id }}">
+                                    <input type="submit" class="btn btn-theme" value="Sepete Ekle" >
+                                </form>
                             </div>
                         @endforeach
                     </div>
