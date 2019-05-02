@@ -25,12 +25,12 @@
                                 <input type="submit" class="btn btn-danger btn-xs" value="Sepetten Kaldır">
                             </form>
                         </td>
-                    <td>{{ $productCart->price }} ₺</td>
+                    <td>{{ number_format($productCart->price )}} ₺</td>
                     <td>
                         <span style="padding: 10px 20px">{{ $productCart->qty }}</span>
                     </td>
                     <td class="text-right">
-                        {{ $productCart->subtotal }} ₺
+                        {{ number_format($productCart->subtotal) }} ₺
                     </td>
                 </tr>
                 @endforeach

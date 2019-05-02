@@ -18,8 +18,8 @@
                 @foreach($orders as $order)
                 <tr>
                     <td>SP-{{ $order->id }}</td>
-                    <td>{{ $order->order_amount * ((100+config('cart.tax'))/100) }}</td>
-                    <td>{{ $order->basket->basket_product_count() }}</td>
+                    <td>{{ number_format($order->order_amount * ((100+config('cart.tax'))/100)) }}</td>
+                    <td>{{ number_format($order->basket->basket_product_count()) }}</td>
                     <td>
                         {{ $order->status }}
                     </td>

@@ -9,7 +9,7 @@
             <div class="col-md-6">
                 <div class="form-group">
                     <label for="name_lastname">Kullanıcı</label>
-                    <input type="text" class="form-control" width="15px" name="name_lastname" id="name_lastname" placeholder="Kullanıcı Adı" value="{{ old('name_lastname', $entry->name_lastname)}}">
+                    <input type="text" class="form-control" width="15px" name="name_lastname" id="name_lastname" placeholder="Kullanıcı Adı" value="{{ old('name_lastname', $entry->name_lastname)}} "readonly>
                 </div>
             </div>
         </div>
@@ -17,7 +17,7 @@
             <div class="col-md-6">
                 <div class="form-group">
                     <label for="tel_number">Telefon</label>
-                    <input type="tel" class="form-control" name="tel_number" id="tel_number" placeholder="Telefon" value="{{ old('tel_number', $entry->tel_number)}}">
+                    <input type="tel" class="form-control" name="tel_number" id="tel_number" placeholder="Telefon" value="{{ old('tel_number', $entry->tel_number)}}"readonly>
                 </div>
             </div>
         </div>
@@ -25,7 +25,7 @@
             <div class="col-md-6">
                 <div class="form-group">
                     <label for="mob_tel_number">Cep Telelfonu</label>
-                    <input type="tel" class="form-control" name="mob_tel_number" id="mob_tel_number" placeholder="Cep Telefonu" value="{{ old('mob_tel_number', $entry->mob_tel_number)}}">
+                    <input type="tel" class="form-control" name="mob_tel_number" id="mob_tel_number" placeholder="Cep Telefonu" value="{{ old('mob_tel_number', $entry->mob_tel_number)}}"readonly>
                 </div>
             </div>
         </div>
@@ -34,7 +34,7 @@
             <div class="col-md-6">
                 <div class="form-group">
                     <label for="address">Adres</label>
-                    <input type="text" class="form-control" name="address" id="address" placeholder="Adres" value="{{ old('address', $entry->address)}}">
+                    <input type="text" class="form-control" name="address" id="address" placeholder="Adres" value="{{ old('address', $entry->address)}}"readonly>
                 </div>
             </div>
         </div>
@@ -69,22 +69,22 @@
                                  : 'http://via.placeholder.com/120x100?text=UrunResmi' }}">
                     </td>
                     <td>{{ $basket_product->product->product_name }}</td>
-                    <td>{{ $basket_product->piece }} ₺</td>
-                    <td>{{ $basket_product->amount }}</td>
-                    <td>{{ $basket_product->piece * $basket_product->amount }} ₺</td>
+                    <td>{{ number_format($basket_product->piece) }} ₺</td>
+                    <td>{{ number_format($basket_product->amount) }}</td>
+                    <td>{{ number_format($basket_product->piece * $basket_product->amount) }} ₺</td>
                 </tr>
             @endforeach
             <tr>
                 <th colspan="4" class="text-right">Ara Toplam</th>
-                <th colspan="2">{{ $entry->order_amount }} ₺</th>
+                <th colspan="2">{{ number_format($entry->order_amount) }} ₺</th>
             </tr>
             <tr>
                 <th colspan="4" class="text-right">KDV</th>
-                <th colspan="2">{{ $entry->order_amount * ((100+config('cart.tax'))/100) - $entry->order_amount }} ₺</th>
+                <th colspan="2">{{ number_format($entry->order_amount * ((100+config('cart.tax'))/100) - $entry->order_amount) }} ₺</th>
             </tr>
             <tr>
                 <th colspan="4" class="text-right">Toplam Tutar (KDV Dahil)</th>
-                <th colspan="2">{{ $entry->order_amount * ((100+config('cart.tax'))/100) }} ₺</th>
+                <th colspan="2">{{ number_format($entry->order_amount * ((100+config('cart.tax'))/100)) }} ₺</th>
             </tr>
 
         </table>

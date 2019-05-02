@@ -39,11 +39,9 @@ class UserController extends Controller
         ];
         if (auth()->attempt($credentials, request()->has('remember'))) {
             request()->session()->regenerate();
-
             $basket_id = Basket::basket_id();
             if (is_null($basket_id)) {
                 $basket = Basket::create(['user_id' => auth()->id()]);
-
                 $basket_id = $basket->id;
             }
             session()->put('basket_id', $basket_id);
@@ -67,7 +65,7 @@ class UserController extends Controller
 
             return redirect()->intended('/');
         } else {
-            $errors = ['mail' => 'Hatalı giriş.'];
+            $errors = ['mail' => 'Hatalı giriş. Veya hesabınızı aktifleştirin'];
             return back()->withErrors($errors);
         }
 
@@ -98,7 +96,6 @@ class UserController extends Controller
 
         Mail::to(request('email'))->send(new UserSignupMail($user));
 
-        Auth::login($user);
 
         return redirect()->route('user.signin');
     }

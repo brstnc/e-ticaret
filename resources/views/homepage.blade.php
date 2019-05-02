@@ -101,6 +101,7 @@
                 </div>
             </div>
         </div>
+        @if (count($products_reduced)>0)
         <div class="products">
             <div class="panel panel-theme">
                 <div class="panel-heading">İndirimli Ürünler</div>
@@ -122,4 +123,5 @@
             </div>
         </div>
     </div>
+    @endif
 @endsection

@@ -22,7 +22,7 @@
                 <tr>
                     <td>{{ $entry->name_lastname }}</td>
                     <td>SP- {{ $entry->id }}</td>
-                    <td>{{ $entry->order_amount * ((100 + config('cart.tax'))/100)}}₺</td>
+                    <td>{{ number_format($entry->order_amount * ((100 + config('cart.tax'))/100))}} ₺</td>
                     <td>{{ $entry->status}}</td>
                     <td>{{ $entry->created_at }}</td>
                     <td style="width: 100px">

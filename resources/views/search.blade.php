@@ -26,7 +26,7 @@
                                 {{$product->product_name}}
                             </a>
                         </p>
-                        <p class="price">{{ $product->price }}</p>
+                        <p class="price">{{ number_format($product->price )}}₺</p>
                     </div>
                 @endforeach
             </div>

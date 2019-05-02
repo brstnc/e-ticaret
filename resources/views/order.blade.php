@@ -19,24 +19,23 @@
                                  : 'http://via.placeholder.com/640x400?text=UrunResmi' }}">
                     </td>
                     <td>{{ $basket_product->product->product_name }}</td>
-                    <td>{{ $basket_product->piece }} ₺</td>
-                    <td>{{ $basket_product->amount }}</td>
-                    <td>{{ $basket_product->piece * $basket_product->amount }} ₺</td>
+                    <td>{{ number_format($basket_product->piece )}} ₺</td>
+                    <td>{{ number_format($basket_product->amount) }}</td>
+                    <td>{{ number_format($basket_product->piece * $basket_product->amount) }} ₺</td>
                 </tr>
                 @endforeach
                 <tr>
                     <th colspan="4" class="text-right">Ara Toplam</th>
-                    <th colspan="2">{{ $order->order_amount }} ₺</th>
+                    <th colspan="2">{{ number_format($order->order_amount) }} ₺</th>
                 </tr>
                 <tr>
                     <th colspan="4" class="text-right">KDV</th>
-                    <th colspan="2">{{ $order->order_amount * ((100+config('cart.tax'))/100) - $order->order_amount }} ₺</th>
+                    <th colspan="2">{{ number_format($order->order_amount * ((100+config('cart.tax'))/100) - $order->order_amount) }} ₺</th>
                 </tr>
                 <tr>
                     <th colspan="4" class="text-right">Toplam Tutar (KDV Dahil)</th>
-                    <th colspan="2">{{ $order->order_amount * ((100+config('cart.tax'))/100) }} ₺</th>
+                    <th colspan="2">{{ number_format($order->order_amount * ((100+config('cart.tax'))/100)) }} ₺</th>
                 </tr>
-
             </table>
         </div>
     </div>
