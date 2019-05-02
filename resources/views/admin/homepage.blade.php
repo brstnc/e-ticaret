@@ -25,7 +25,7 @@
             <div class="panel panel-primary">
                 <div class="panel-heading">Ürün</div>
                 <div class="panel-body">
-                    <h4>{{ $statistics['count'] }}</h4>
+                    <h4>{{ $statistics['products'] }}</h4>
                     <p>Adet</p>
                 </div>
             </div>
@@ -34,7 +34,7 @@
             <div class="panel panel-primary">
                 <div class="panel-heading">Kullanıcı</div>
                 <div class="panel-body">
-                    <h4>{{ $statistics['user'] }}</h4>
+                    <h4>{{ $statistics['users'] }}</h4>
                     <p>Kişi</p>
                 </div>
             </div>
