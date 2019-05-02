@@ -13,6 +13,7 @@
                     <th>Tutar</th>
                     <th>Toplam Ürün</th>
                     <th>Durum</th>
+                    <th>Sipariş Tarihi</th>
                 </tr>
                 @foreach($orders as $order)
                 <tr>
@@ -22,6 +23,7 @@
                     <td>
                         {{ $order->status }}
                     </td>
+                    <td>{{ $order->created_at }}</td>
                     <td><a href="{{ route('order', $order->id) }}" class="btn btn-sm btn-success">Detay</a></td>
                 </tr>
                 @endforeach

@@ -24,7 +24,7 @@
         <div class="row">
             <div class="col-md-6">
                 <div class="form-group">
-                    <label for="mob_tel_number">Adres</label>
+                    <label for="mob_tel_number">Cep Telelfonu</label>
                     <input type="tel" class="form-control" name="mob_tel_number" id="mob_tel_number" placeholder="Cep Telefonu" value="{{ old('mob_tel_number', $entry->mob_tel_number)}}">
                 </div>
             </div>

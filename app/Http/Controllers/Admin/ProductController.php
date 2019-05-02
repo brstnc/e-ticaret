@@ -14,7 +14,6 @@ class ProductController extends Controller
     {
 
         $list = Product::orderbyDesc('id')->paginate(8);
-
         return view('admin.product.index', compact('list'));
     }
 

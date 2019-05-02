@@ -71,7 +71,7 @@
                         <div class="col-md-8">
                             <div class="form-group">
                                 <label for="address">Adres</label>
-                                <input type="text" class="form-control" name="adress" id="adress" value="{{ $detail->address }}" required>
+                                <input type="text" class="form-control" name="address" id="address" value="{{ $detail->address }}" required>
                             </div>
                         </div>
 
