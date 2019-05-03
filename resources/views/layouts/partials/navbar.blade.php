@@ -11,7 +11,6 @@
                 <img src="/E-Ticaret/laravel/public/img/logo.png">
             </a>
         </div>
-        <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <form class="navbar-form navbar-left" action="{{route('search')}}" method="post">
                 {{ csrf_field() }}
@@ -25,7 +24,7 @@
                 </div>
             </form>
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="{{ route('basket') }}"><i class="fa fa-shopping-cart"></i> Sepet <span class="badge badge-theme">{{Cart::count()}}</span></a></li>
+                <li><a href="{{ route('basket') }}"><i class="fa fa-shopping-cart"></i> Sepet <span class="badge badge-theme">@if(Cart::count()>0){{Cart::count()}}@endif</span></a></li>
                 @guest
                 <li><a href="{{route('user.signin')}}">Oturum Aç</a></li>
                 <li><a href="{{ route('user.signup') }}">Kaydol</a></li>
