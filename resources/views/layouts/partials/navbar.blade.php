@@ -29,12 +29,13 @@
                 <li><a href="{{route('user.signin')}}">Oturum Aç</a></li>
                 <li><a href="{{ route('user.signup') }}">Kaydol</a></li>
                 @endguest
-
                 @auth
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> {{ \Illuminate\Support\Facades\Auth::user()->name_lastname }} <span class="caret"></span></a>
                     <ul class="dropdown-menu">
                         <li><a href="{{ route('orders') }}">Siparişlerim</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="{{ route('profile') }}">Profil</a></li>
                         <li role="separator" class="divider"></li>
                         <li>
                             <a href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit()">

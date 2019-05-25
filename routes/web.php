@@ -27,6 +27,9 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/orders/{id}', 'OrdersController@detail')->name('order');
     Route::get('/payment', 'PaymentController@index')->name('payment');
     Route::post('/payment', 'PaymentController@pay')->name('pay');
+    Route::get('/profile', 'ProfileController@profile')->name('profile');
+    Route::get('/update/{id}', 'ProfileController@form')->name('profile.update');
+    Route::post('/save/{id}', 'ProfileController@save')->name('profile.save');
 });
 Route::group(['prefix' => 'user'], function() {
     Route::get('/signin', 'UserController@signin_form')->name('user.signin');
@@ -36,7 +39,6 @@ Route::group(['prefix' => 'user'], function() {
     Route::post('/logout', 'UserController@logout')->name('user.logout');
     Route::get('/active/{key}', 'UserController@active')->name('active');
 });
-
 Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
    Route::redirect('/', 'admin/signin');
    Route::match(['get','post'],'/signin', 'AuthController@signin')->name('admin.signin');
@@ -71,7 +73,6 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
             Route::post('/save/{id}', 'OrderController@save')->name('admin.order.save');
             Route::get('/delete/{id}', 'OrderController@delete')->name('admin.order.delete');
         });
-
     });
 });
 

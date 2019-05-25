@@ -27,10 +27,11 @@ class ProductController extends Controller
             $product_categories = $entry->categories()->pluck('category_id')->all();
         }
         $categories = Category::all();
+        $up_categories = Category::all()->where('up_id', null);
 
-        return view('admin.product.form', compact('entry', 'categories', 'product_categories'));
+        return view('admin.product.form', compact('entry', 'categories', 'product_categories',
+            'up_categories'));
     }
-
     public function save($id = 0)
     {
         $this->validate(request(), [

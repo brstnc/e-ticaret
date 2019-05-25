@@ -13,7 +13,7 @@
                     <select name="up_id" id="up_id" class="form-control">
                         <option value="">Ana Kategori</option>
                         @foreach($categories as $category)
-                            <option selected value="{{ $category->id }}">{{ $category->category_name }}</option>
+                            <option>{{ $category->category_name }}</option>
                         @endforeach
                     </select>
                     <p>(Üst kategori seçilmediği durumda kayıt, üst kategori olarak ayarlanır.)</p>
@@ -40,3 +40,4 @@
         <button type="submit" class="btn btn-primary">Kaydet</button>
     </form>
 @endsection
+
